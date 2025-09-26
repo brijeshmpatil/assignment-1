@@ -1,70 +1,62 @@
-# Getting Started with Create React App
+# Spending Tracker App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A React spending tracker with category progress indicators.
 
-## Available Scripts
+## Setup
 
-In the project directory, you can run:
+1. **Clone from GitHub:**
+   ```bash
+   git clone <your-repo-url>
+   cd assignment-1
+   ```
 
-### `npm start`
+2. **Install packages:**
+   ```bash
+   npm install
+   ```
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+3. **Run server:**
+   ```bash
+   npm start
+   ```
+   Opens at http://localhost:3000
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Making Changes
 
-### `npm test`
+### Change Categories & Percentages
+Edit the `categories` array in `src/App.js` (lines 55-68):
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+```javascript
+const categories = [
+  { name: 'Housing', icon: <Home />, amount: '$0.00', left: 'left', percentage: 0 },
+  { name: 'Transport', icon: <DirectionsCar />, amount: '$62.56', left: 'left', percentage: 20 },
+  // Add more categories here
+];
+```
 
-### `npm run build`
+**Properties:**
+- `name`: Category name
+- `amount`: Spending amount  
+- `percentage`: Progress (0-100)
+- `left`: Status ('left' or 'over limit')
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Change Progress Colors
+Modify `getProgressColor` function in `App.js`:
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+```javascript
+const getProgressColor = (percentage) => {
+  if (percentage < 33) return '#4caf50';  // Green
+  if (percentage < 66) return '#ff9800';  // Orange  
+  return '#f44336';                       // Red
+};
+```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### Add New Category
+1. Import icon: `import { YourIcon } from '@mui/icons-material';`
+2. Add to categories array: `{ name: 'Category', icon: <YourIcon />, amount: '$50.00', left: 'left', percentage: 25 }`
 
-### `npm run eject`
+## Scripts
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- `npm start` - Run development server
+- `npm test` - Run tests
+- `npm run build` - Build for production

@@ -184,7 +184,7 @@ function App() {
     if (categoryLower.includes('loan') || categoryLower.includes('credit')) {
       return <CreditCard />;
     }
-    if (categoryLower.includes('grocery') || categoryLower.includes('food')) {
+    if (categoryLower.includes('groceries') || categoryLower.includes('food')) {
       return <ShoppingCart />;
     }
     if (categoryLower.includes('entertainment') || categoryLower.includes('fun')) {
